@@ -4,7 +4,7 @@
   "description": "Example API that could power the Frederic React modularisation stack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "Alasdair McLeay",
   "license": "ISC",
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/penx/govuk-frederic-api/issues"
   },
-  "homepage": "https://github.com/penx/govuk-frederic-api#readme"
+  "homepage": "https://github.com/penx/govuk-frederic-api#readme",
+  "dependencies": {
+    "@govuk-frederic/sample-data": "0.0.3",
+    "apollo-server": "^2.1.0",
+    "graphql": "^14.0.2"
+  }
 }
