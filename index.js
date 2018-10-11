@@ -44,5 +44,6 @@ const server = new ApolloServer({ typeDefs, resolvers });
 // This `listen` method launches a web-server.  Existing apps
 // can utilize middleware options, which we'll discuss later.
 server.listen().then(({ url }) => {
+  // eslint-disable-next-line no-console
   console.log(`🚀  Server ready at ${url}`);
 });
