@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/penx/govuk-frederic-api#readme",
   "dependencies": {
-    "@govuk-frederic/sample-data": "0.0.3",
+    "@govuk-frederic/sample-data": "0.0.4",
     "apollo-server": "^2.1.0",
     "graphql": "^14.0.2"
   }
