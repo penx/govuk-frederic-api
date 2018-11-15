@@ -1,6 +1,10 @@
 const { ApolloServer, gql } = require('apollo-server');
 
 const { results } = require('@govuk-frederic/sample-data')
+const config = require('config');
+
+const { authenticated, authContext } = require('./auth');
+const AUTH_ENABLED = config.get('AUTH_ENABLED');
 
 const typeDefs = gql`
   type Item {
@@ -32,14 +36,18 @@ const typeDefs = gql`
 // schema.  We'll retrieve books from the "books" array above.
 const resolvers = {
   Query: {
-    results: () => results,
+    results: AUTH_ENABLED ? authenticated(results) : () => results
   },
 };
 
 // In the most basic sense, the ApolloServer can be started
 // by passing type definitions (typeDefs) and the resolvers
 // responsible for fetching the data for those types.
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: AUTH_ENABLED ? authContext : null
+});
 
 // This `listen` method launches a web-server.  Existing apps
 // can utilize middleware options, which we'll discuss later.
